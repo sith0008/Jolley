@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../global.dart' as global;
 import './list.dart' as list;
 import './recipe.dart' as recipe;
+import './profiles.dart' as profiles;
+
 
 class Home extends StatefulWidget {
   Home({this.onSignedOut});
@@ -43,7 +45,7 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-            title: new Text(handler.title),
+            title: new Text("Toshiba"),
             backgroundColor: global.Global().primaryColor,
             textTheme: Theme.of(context).textTheme.apply(
                   bodyColor: global.Global().textColor,
@@ -56,13 +58,22 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
                 color: global.Global().textColor,
                 tooltip: 'Profiles',
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => profiles.Profiles()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => profiles.Profiles()));
                 },
               ),
             ]),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () { },
+            backgroundColor: global.Global().primaryColor,
+            tooltip: 'Add',
+            child: Icon(Icons.add),
+            elevation: 2.0,
+          ),
+
         bottomNavigationBar: new Material(
             color: global.Global().primaryColor,
             child: new TabBar(
@@ -73,10 +84,10 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
                 ],
                 indicatorColor: global.Global().textColor,
                 labelColor: global.Global().textColor,
-                unselectedLabelColor: Colors.grey)),
+                unselectedLabelColor: Colors.grey),),
         body: new TabBarView(controller: controller, children: <Widget>[
-          // new announce.Announce(),
-          // new match.Match(),
+          new list.List(),
+          new recipe.Recipe(),
         ]));
   }
 }

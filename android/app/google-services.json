@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "395596368325",
+    "firebase_url": "https://toshiba-3061e.firebaseio.com",
+    "project_id": "toshiba-3061e",
+    "storage_bucket": "toshiba-3061e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395596368325:android:9de3bff0838ad45a",
+        "android_client_info": {
+          "package_name": "com.example.toshibaretailchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395596368325-077bi589vu4qc3hje11n8gc7397sn239.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcxzWqLymnH7tBOKpWHvFpJL9x5gtPON8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

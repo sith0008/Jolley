@@ -12,6 +12,11 @@ void main() {
 }
 
 class App extends StatelessWidget {
+  final themeColor = new Color(0xffED1B24);
+  final primaryColor1 = new Color(0xffED1B24);
+  Color get primaryColor {
+    return primaryColor1;
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

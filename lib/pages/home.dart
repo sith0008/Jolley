@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../global.dart' as global;
 import './list.dart' as list;
 import './recipe.dart' as recipe;
 
@@ -43,16 +44,16 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     return new Scaffold(
         appBar: new AppBar(
             title: new Text(handler.title),
-            backgroundColor: Colors.white,
+            backgroundColor: global.Global().primaryColor,
             textTheme: Theme.of(context).textTheme.apply(
-                  bodyColor: new Color(0xFFDAA520),
-                  displayColor: new Color(0xFFDAA520),
+                  bodyColor: global.Global().textColor,
+                  displayColor: global.Global().textColor,
                   fontFamily: 'Garamond',
                 ),
             actions: <Widget>[
               new IconButton(
                 icon: new Icon(Icons.account_circle),
-                color: new Color(0xFFDAA520),
+                color: global.Global().textColor,
                 tooltip: 'Profiles',
                 onPressed: () {
                   // Navigator.push(
@@ -63,15 +64,15 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ]),
         bottomNavigationBar: new Material(
-            color: Colors.white,
+            color: global.Global().primaryColor,
             child: new TabBar(
                 controller: controller,
                 tabs: <Tab>[
                   new Tab(icon: new Icon(Icons.list)),
                   new Tab(icon: new Icon(Icons.fastfood))
                 ],
-                indicatorColor: new Color(0xFFDAA520),
-                labelColor: new Color(0xFFDAA520),
+                indicatorColor: global.Global().textColor,
+                labelColor: global.Global().textColor,
                 unselectedLabelColor: Colors.grey)),
         body: new TabBarView(controller: controller, children: <Widget>[
           // new announce.Announce(),

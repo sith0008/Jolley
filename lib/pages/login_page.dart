@@ -72,14 +72,14 @@ class _LoginPageState extends State<LoginPage> {
             .signInWithEmailAndPassword(
                 email: _username, password: _password);
         print('Signed in: $firebaseUser');
-        // {
-        //   Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (BuildContext context) => Home(),
-        //     ),
-        //   );
-        // }
+        {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => Home(),
+            ),
+          );
+        }
       } catch (e) {
         print('Error: $e');
         _showDialog();

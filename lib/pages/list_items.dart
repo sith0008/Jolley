@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../global.dart' as global;
 import './list_items.dart' as list_items;
-import './game_home.dart' as game_home;
 
-class List extends StatelessWidget {
+class ListItems extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return new Container(
+    return new Scaffold(
+        appBar: new AppBar(
+            title: new Text('Groceries List 1'),
+            backgroundColor: global.Global().primaryColor,
+            textTheme: Theme.of(context).textTheme.apply(
+                  bodyColor: global.Global().textColor,
+                  displayColor: global.Global().textColor,
+                  fontFamily: 'Garamond',
+                ),
+        ),
+                body: Container(
         child: new Container(
-      child: new GestureDetector(
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => list_items.ListItems()));
-        },
-        child: new Card(
-          color: Colors.white,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+      child: new Card(
+        color: Colors.white,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+        child: new GestureDetector(
+          onTap: () {
+            Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => list_items.ListItems()));
+          },
           child: new ListTile(
               title: new Text(document['Name']),
               subtitle: new Text("Items: " + document['Items']),
@@ -24,15 +36,15 @@ class List extends StatelessWidget {
                 icon: new Icon(Icons.videogame_asset),
                 tooltip: 'Lists',
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => game_home.GameHome()));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => profiles.Profiles()));
                 },
               )),
         ),
       ),
-    ));
+    )));
   }
 
   @override

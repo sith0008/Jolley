@@ -143,10 +143,10 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
 
   storeData() {
     print('storing data');
-    print(getData());
-    recipe_name = getData();
+    print(getData().toString());
+    recipe_name = getData().toString();
     print(recipe_name);
-    items = getData2();
+    items = getData2().toString();
     if (recipe_name == barcode) {
       DocumentReference documentReference = Firestore.instance
           .collection('Profiles')

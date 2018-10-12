@@ -17,7 +17,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'AirVenue',
-        home: GameHome(),
+        home: LoginPage(),
     );
   }
 }

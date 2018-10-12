@@ -1,0 +1,9 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+/google-services.json
+build/
+
+.flutter-plugins

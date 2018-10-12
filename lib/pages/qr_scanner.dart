@@ -26,7 +26,7 @@ class _ScanState extends State<ScanScreen> {
           backgroundColor: global.Global().primaryColor,
           title: new Text('Recipe QR Code Scanner'),
         ),
-        body: new Center(
+        body: new Center( 
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,

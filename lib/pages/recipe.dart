@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import './home.dart' as home;
 
 class Recipe extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
@@ -22,7 +23,7 @@ class Recipe extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
         color: Colors.grey[200],
-        child: new StreamBuilder(
+        child: StreamBuilder(
             stream: Firestore.instance
                 .collection('Profiles')
                 .document('Jay Sean')

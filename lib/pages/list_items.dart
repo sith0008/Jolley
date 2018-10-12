@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global.dart' as global;
-import './list_items.dart' as list_items;
+import './add_list.dart' as add_list;
 
 class ListItems extends StatelessWidget {
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
@@ -83,7 +83,13 @@ class ListItems extends StatelessWidget {
                 );
               })),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+                          Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => add_list.AddList()));
+
+        },
         backgroundColor: global.Global().primaryColor,
         tooltip: 'Add',
         child: Icon(Icons.add),

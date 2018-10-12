@@ -117,19 +117,29 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     );
   }
 
-Stream<QuerySnapshot> getNoteList({int offset, int limit}) {
-  Stream<QuerySnapshot> snapshots = Firestore.instance.collection('Recipe').snapshots();
- 
-  if (offset != null) {
-    snapshots = snapshots.skip(offset);
+  getData() async {
+    return await Firestore.instance
+        .collection('Recipe')
+        .document('Curry Chicken')
+        .get()
+        .then((docSnap) {
+      var recipeName = docSnap.data['name'];
+      assert(recipeName is String);
+      return recipeName;
+    });
   }
- 
-  if (limit != null) {
-    snapshots = snapshots.take(limit);
+
+    getData2() async {
+    return await Firestore.instance
+        .collection('Recipe')
+        .document('Curry Chicken')
+        .get()
+        .then((docSnap) {
+      var recipeItem = docSnap.data['items'];
+      assert(recipeItem is String);
+      return recipeItem;
+    });
   }
- 
-  return snapshots;
-}
 
   storeData() {
     print('storing data');

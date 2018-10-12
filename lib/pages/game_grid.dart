@@ -3,55 +3,59 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/services.dart';
+import '../global.dart' as global;
 
 class GameGrid extends StatefulWidget {
   State createState() => new GameGridState();
 }
 
 class GameGridState extends State<GameGrid> {
-
-  int points;
-  List barcode_list;
+  int points = 0;
   String barcode;
   Widget build(BuildContext context) {
-    DocumentReference userPoints = Firestore.instance.document("Profiles/Jay Sean");
-    userPoints.get().then((snapshot){
+    DocumentReference userPoints =
+        Firestore.instance.document("Profiles/Jay Sean");
+    userPoints.get().then((snapshot) {
       points = snapshot.data['points'];
     });
+    //print(points);
     return new Scaffold(
       body: new Container(
-<<<<<<< HEAD
-        decoration: new BoxDecoration(
-          gradient: new LinearGradient(
-            begin: Alignment.topLeft,
-            colors: [Colors.lime[300], Colors.lime[100]],
-            stops: [0.4,0.4],
-            tileMode: TileMode.repeated
-          ),
-        ),
-        child: new Column(
-          crossAxisAlignment:CrossAxisAlignment.stretch,
-          children: <Widget>[
-            new Container( 
-=======
-        color: Colors.red,
+        color: Color.fromRGBO(255, 204, 172, 1.0),
+        // decoration: new BoxDecoration(
+        //   gradient: new LinearGradient(
+        //     begin: FractionalOffset.topCenter,
+        //     end: FractionalOffset.bottomCenter,
+        //     colors: [Colors.pink[200], Colors.grey[100]],
+        //     //tileMode: TileMode.repeated
+        //   ),
+        // ),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             new Container(
->>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
               padding: EdgeInsets.only(top: 30.0),
-              child: new Text(
-                "Your Shopping List",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30.0,
+              child: new Container(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  "Your Shopping List",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "HomeSchool",
+                    color: Colors.black,
+                    fontSize: 35.0,
+                  ),
                 ),
               ),
             ),
             new Container(
-              padding: EdgeInsets.only(top: 10.0),
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              decoration: new BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(10.0),
+                border: Border.all(color: Colors.white, width: 1.0),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.0),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -60,11 +64,14 @@ class GameGridState extends State<GameGrid> {
                       children: <Widget>[
                         new Container(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: new Text("1. Tap",
-                              style: new TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                              )),
+                          child: new Text(
+                            "1. Tap",
+                            style: new TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontFamily: "JumpingFrogDemo",
+                            ),
+                          ),
                         ),
                         new Icon(
                           Icons.touch_app,
@@ -81,6 +88,7 @@ class GameGridState extends State<GameGrid> {
                           child: new Text("2. Scan",
                               style: new TextStyle(
                                 color: Colors.white,
+                                fontFamily: "JumpingFrogDemo",
                                 fontSize: 20.0,
                               )),
                         ),
@@ -99,6 +107,7 @@ class GameGridState extends State<GameGrid> {
                           child: new Text("3. Win",
                               style: new TextStyle(
                                 color: Colors.white,
+                                fontFamily: "JumpingFrogDemo",
                                 fontSize: 20.0,
                               )),
                         ),
@@ -139,8 +148,8 @@ class GameGridState extends State<GameGrid> {
                             //     snapshot.data.documents[index]['barcode'];
 
                             if (snapshot.data.documents[index]["checked"] ==
-                                true)  {
-                              return  new Stack(
+                                true) {
+                              return new Stack(
                                 fit: StackFit.expand,
                                 children: <Widget>[
                                   new GridTile(
@@ -152,11 +161,7 @@ class GameGridState extends State<GameGrid> {
                                         child: new Column(
                                           children: <Widget>[
                                             new Expanded(
-<<<<<<< HEAD
-                                              flex:3,
-=======
                                               flex: 3,
->>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                               child: new Image.network(snapshot
                                                   .data
                                                   .documents[index]['image']),
@@ -164,10 +169,7 @@ class GameGridState extends State<GameGrid> {
                                             new Expanded(
                                               flex: 1,
                                               child: new Container(
-<<<<<<< HEAD
                                                 color: Colors.blue,
-=======
->>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                                 child: new Text(snapshot.data
                                                     .documents[index]['name']),
                                               ),
@@ -215,17 +217,32 @@ class GameGridState extends State<GameGrid> {
                                               .setData(data, merge: true)
                                               .whenComplete(() {})
                                               .catchError((e) => print(e));
-                                          
-                                            points  = points + 100;
+
+                                          points = points + 100;
 
                                           return new Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 150.0,
                                                 horizontal: 30.0),
                                             child: new Card(
-                                              child: Center(
-                                                child: new Text(
-                                                    "Congratulations, you found the right item! You scored 100 points!"),
+                                              child: new Container(
+                                                child: new Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                  children: <Widget>[
+                                                    new Container(
+                                                      padding:EdgeInsets.symmetric(vertical: 10.0),
+                                                      color: Color.fromRGBO(245, 108, 87, 1.0),
+                                                      child: new Text(
+                                                          "Congratulations!",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontFamily: "JumpingFrogDemo",
+                                                            fontSize: 30.0,
+                                                            color: Colors.white,
+                                                          )),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
@@ -235,9 +252,24 @@ class GameGridState extends State<GameGrid> {
                                                 vertical: 150.0,
                                                 horizontal: 30.0),
                                             child: new Card(
-                                              child: Center(
-                                                child: new Text(
-                                                    "This is not the right item!"),
+                                              child: new Container(
+                                                child: new Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                  children: <Widget>[
+                                                    new Container(
+                                                      padding:EdgeInsets.symmetric(vertical: 10.0),
+                                                      color: Color.fromRGBO(245, 108, 87, 1.0),
+                                                      child: new Text(
+                                                          "Congratulations!",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontFamily: "JumpingFrogDemo",
+                                                            fontSize: 30.0,
+                                                            color: Colors.white,
+                                                          )),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
@@ -249,44 +281,42 @@ class GameGridState extends State<GameGrid> {
                                   child: new Card(
                                     elevation: 5.0,
                                     color: Colors.white,
-<<<<<<< HEAD
                                     child: new Container(
                                       decoration: new BoxDecoration(
-                                        border: new Border.all(color:Colors.white,width:2.0),
+                                        border: new Border.all(
+                                            color: Colors.white, width: 2.0),
                                       ),
-                                      child:new Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                                      children: <Widget>[
-                                        new Expanded(
-                                          flex: 3, 
-=======
-                                    child: new Column(
-                                      children: <Widget>[
-                                        new Expanded(
-                                          flex: 3,
->>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
-                                          child: new Image.network(snapshot
-                                              .data.documents[index]['image']),
-                                        ),
-                                        new Expanded(
-                                          flex: 1,
-                                          child: new Container(
-<<<<<<< HEAD
-                                            color: Colors.teal,
-                                            child: new Text(snapshot
-                                                .data.documents[index]['name'],style:TextStyle(color: Colors.white),
-                                          ),),
-                                        ),
-                                      ],
-                                    ),),
-=======
-                                            child: new Text(snapshot
-                                                .data.documents[index]['name']),
+                                      child: new Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: <Widget>[
+                                          new Expanded(
+                                            flex: 1,
+                                            child: new Container(
+                                              color: Color.fromRGBO(
+                                                  245, 108, 87, 1.0),
+                                              child: new Center(
+                                                child: new Text(
+                                                  snapshot.data.documents[index]
+                                                      ['name'],
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          "JumpingFrogDemo",
+                                                      fontSize: 20.0,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          new Expanded(
+                                            flex: 3,
+                                            child: new Image.network(snapshot
+                                                .data
+                                                .documents[index]['image']),
+                                          ),
+                                        ],
+                                      ),
                                     ),
->>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                   ),
 
                                   // _buildGridTiles(
@@ -299,10 +329,22 @@ class GameGridState extends State<GameGrid> {
                     })),
             new Expanded(
               flex: 1,
-              child: new Card(
-                  child: Text(points.toString(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 30.0))),
+              child: new Container(
+                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                decoration: new BoxDecoration(
+                  color: Colors.amber,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(color: Colors.white, width: 1.0),
+                ),
+                child: Center(
+                    child: Text(points.toString() + " POINTS",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.0,
+                            fontFamily: "AldotheApache"))),
+              ),
             ),
           ],
         ),

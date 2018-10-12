@@ -11,56 +11,132 @@ class GameHomeState extends State<GameHome> {
       body: new Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: new BoxDecoration(
+        color: Color.fromRGBO(255, 204, 172, 1.0),
+        /* decoration: new BoxDecoration(
           gradient: new LinearGradient(
             begin: FractionalOffset.topCenter,
             end: FractionalOffset.bottomCenter,
             colors: [Colors.pink[300], Colors.orange[100]],
             //tileMode: TileMode.mirror
           ),
-        ),
+        ), */
         child: new Padding(
-          padding: EdgeInsets.fromLTRB(30.0, 150.0, 30.0, 150.0),
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
           child: new Container(
             child: new Column(
               children: <Widget>[
                 new Container(
-                  padding: EdgeInsets.only(top: 50.0),
-                  child: new Text("Ready for some family fun?",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontFamily: "ObelixPro", fontSize: 30.0)),
-                ),
-                new Container(
-                  padding: EdgeInsets.only(top: 50.0),
-                  child: new Container(
-                    padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-                    decoration: new BoxDecoration(
-                      borderRadius: BorderRadius.circular(32.0),
-                      color: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical:40.0),
+                  child: new Text(
+                    "Time for some family fun!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "LettersforLearners",
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    child: new RaisedButton(
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      onPressed: () {
+                  ),
+                ),
+                new Expanded(
+                  child: new Container(
+                    
+                    child: new Column(
+                      children: <Widget>[
+                        new Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: new Row(
+                            children: <Widget>[
+                              new CircleAvatar(
+                                radius: 42.0,
+                                backgroundColor: Colors.teal[300],
+                                child: Image.asset("assets/tap.png"),
+                              ),
+                              new Expanded(child:new Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: new Text(
+                                    "Tap on a food item!",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "LettersforLearners",
+                                      fontSize: 30.0,
+                                    ),
+                                  ),),),
+                            ],
+                          ),
+                        ),
+                        new Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: new Row(
+                            children: <Widget>[
+                              new CircleAvatar(
+                                radius: 42.0,
+                                backgroundColor: Colors.blue,
+                                child: Image.asset("assets/barcode.png"),
+                              ),
+                              new Expanded(child:new Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: new Text(
+                                    "Find item and scan its barcode!",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "LettersforLearners",
+                                      fontSize: 30.0,
+                                    ),
+                                  ),),),
+                            ],
+                          ),
+                        ),
+                        new Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: new Row(
+                            children: <Widget>[
+                              new CircleAvatar(
+                                radius: 42.0,
+                                backgroundColor: Colors.lime,
+                                child: Image.asset("assets/trophy.png"),
+                              ),
+                              new Expanded(child:new Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: new Text(
+                                    "Earn points and win!",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "LettersforLearners",
+                                      fontSize: 30.0,
+                                    ),
+                                  ),),),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                new GestureDetector(
+                      onTap:(){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GameGrid(),
+                              builder: (context) => GameGrid()));
+                          },
+                      child: new Container(
+                        margin: EdgeInsets.fromLTRB(3.0, 10.0, 3.0, 10.0),
+                        padding: EdgeInsets.symmetric(horizontal:10.0,vertical:10.0,),
+                        decoration: new BoxDecoration(
+                          color: Colors.amber,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(color: Colors.white, width: 1.0),
                           ),
-                        );
-                      },
-                      elevation: 2.0,
-                      color: Color.fromRGBO(100, 155, 255, 1.0),
-                      splashColor: Color.fromRGBO(0, 100, 255, 1.0),
-                      child: new Text("Next",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Raleway",
-                              fontSize: 20.0)),
+                        child: Center(
+                          child: Text("CONTINUE",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontFamily: "AldotheApache"),),),
                     ),
                   ),
-                )
               ],
             ),
           ),

@@ -12,7 +12,7 @@ class GameGrid extends StatefulWidget {
 }
 
 class GameGridState extends State<GameGrid> {
-  int points = 0;
+  int points=0;
   String barcode;
   Widget build(BuildContext context) {
     DocumentReference userPoints =
@@ -23,7 +23,7 @@ class GameGridState extends State<GameGrid> {
     //print(points);
     return new Scaffold(
       body: new Container(
-        color: Color.fromRGBO(255, 204, 172, 1.0),
+        color: Color.fromRGBO(255, 204, 180, 1.0),
         // decoration: new BoxDecoration(
         //   gradient: new LinearGradient(
         //     begin: FractionalOffset.topCenter,
@@ -52,11 +52,11 @@ class GameGridState extends State<GameGrid> {
             ),
             new Container(
               margin: EdgeInsets.symmetric(horizontal: 10.0),
-              decoration: new BoxDecoration(
+              /* decoration: new BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(color: Colors.white, width: 1.0),
-              ),
+                border: Border.all(color: Color.fromRGBO(245, 108, 87, 1.0), width: 1.0),
+              ), */
               padding: EdgeInsets.symmetric(vertical: 10.0),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -69,15 +69,16 @@ class GameGridState extends State<GameGrid> {
                           child: new Text(
                             "1. Tap",
                             style: new TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 20.0,
                               fontFamily: "JumpingFrogDemo",
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        new Icon(
-                          Icons.touch_app,
-                          color: Colors.white,
+                        new ImageIcon(
+                          AssetImage('assets/tap.png'),
+                          color: Colors.black,
                         ),
                       ],
                     ),
@@ -89,14 +90,14 @@ class GameGridState extends State<GameGrid> {
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: new Text("2. Scan",
                               style: new TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontFamily: "JumpingFrogDemo",
                                 fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
                               )),
                         ),
-                        new Icon(
-                          Icons.camera_alt,
-                          color: Colors.white,
+                        new ImageIcon(AssetImage('assets/barcode.png'),
+                          color: Colors.black,
                         ),
                       ],
                     ),
@@ -108,14 +109,14 @@ class GameGridState extends State<GameGrid> {
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: new Text("3. Win",
                               style: new TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontFamily: "JumpingFrogDemo",
                                 fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
                               )),
                         ),
-                        new Icon(
-                          Icons.score,
-                          color: Colors.white,
+                        new ImageIcon(AssetImage('assets/trophy.png'),
+                          color: Colors.black,
                         ),
                       ],
                     ),
@@ -239,6 +240,7 @@ class GameGridState extends State<GameGrid> {
                                               .catchError((e) => print(e));
 
                                           points = points + 100;
+                                          barcode ="";
 
                                           return new Padding(
                                             padding: EdgeInsets.symmetric(
@@ -265,7 +267,7 @@ class GameGridState extends State<GameGrid> {
                                                       flex:3,
                                                       child: new Center(
                                                         child: new Text(
-                                                          "You have earned 100 points!",
+                                                          "You've found the right item and earned 100 points!",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
                                                             fontFamily: "LettersforLearners",
@@ -296,7 +298,10 @@ class GameGridState extends State<GameGrid> {
                                               ),
                                             ),
                                           );
-                                        } else {
+                                        
+                                        } 
+                                        
+                                        else {
                                           return new Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 150.0,
@@ -322,7 +327,7 @@ class GameGridState extends State<GameGrid> {
                                                       flex:3,
                                                       child: new Center(
                                                         child: new Text(
-                                                          "Are you sure you scanned the right item?",
+                                                          "This isn't the right item! Try again!",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
                                                             fontFamily: "LettersforLearners",
@@ -426,17 +431,17 @@ class GameGridState extends State<GameGrid> {
                         padding: EdgeInsets.symmetric(horizontal:10.0),
                         decoration: new BoxDecoration(
                           color: Colors.amber,
-                          shape: BoxShape.rectangle,
+                          shape:  BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10.0),
                           border: Border.all(color: Colors.white, width: 1.0),
                           ),
-                      child: Center(
-                        child: Text("EXIT",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontFamily: "AldotheApache"),),),
+                        child: Center(
+                          child: Text("EXIT",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontFamily:"AldotheApache"),),),
                     ),
                   ),
                   ),

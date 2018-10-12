@@ -72,6 +72,10 @@ flutter:
       fonts:
         - asset: fonts/JumpingFrogDemo.ttf
           style: italic
+    - family: LettersforLearners
+      fonts:
+        - asset: fonts/LettersforLearners.ttf
+          style: italic
     - family: AldotheApache
       fonts:
         - asset: fonts/AldotheApache.ttf

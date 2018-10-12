@@ -154,33 +154,51 @@ class GameGridState extends State<GameGrid> {
                                 children: <Widget>[
                                   new GridTile(
                                     child: new Container(
-                                      padding: EdgeInsets.all(7.0),
-                                      child: new Card(
-                                        elevation: 5.0,
-                                        color: Colors.white,
-                                        child: new Column(
-                                          children: <Widget>[
-                                            new Expanded(
-                                              flex: 3,
-                                              child: new Image.network(snapshot
-                                                  .data
-                                                  .documents[index]['image']),
-                                            ),
-                                            new Expanded(
-                                              flex: 1,
-                                              child: new Container(
-                                                color: Colors.blue,
-                                                child: new Text(snapshot.data
-                                                    .documents[index]['name']),
+                                  padding: EdgeInsets.all(7.0),
+                                  child: new Card(
+                                    elevation: 5.0,
+                                    color: Colors.white,
+                                    child: new Container(
+                                      decoration: new BoxDecoration(
+                                        border: new Border.all(
+                                            color: Colors.white, width: 2.0),
+                                      ),
+                                      child: new Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: <Widget>[
+                                          new Expanded(
+                                            flex: 1,
+                                            child: new Container(
+                                              color: Color.fromRGBO(
+                                                  245, 108, 87, 1.0),
+                                              child: new Center(
+                                                child: new Text(
+                                                  snapshot.data.documents[index]
+                                                      ['name'],
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          "JumpingFrogDemo",
+                                                      fontSize: 20.0,
+                                                      color: Colors.white),
+                                                ),
                                               ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                          new Expanded(
+                                            flex: 3,
+                                            child: new Image.network(snapshot
+                                                .data
+                                                .documents[index]['image']),
+                                          ),
+                                        ],
                                       ),
-
-                                      // _buildGridTiles(
-                                      //     context, snapshot.data.documents[index]);
                                     ),
+                                  ),
+
+                                  // _buildGridTiles(
+                                  //     context, snapshot.data.documents[index]);
+                                ),
                                   ),
                                   new Center(
                                       child: new CircleAvatar(
@@ -241,6 +259,36 @@ class GameGridState extends State<GameGrid> {
                                                             color: Colors.white,
                                                           )),
                                                     ),
+                                                    new Expanded(
+                                                      flex:3,
+                                                      child: new Center(
+                                                        child: new Text(
+                                                          "You have earned 100 points!",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontFamily: "LettersforLearners",
+                                                            fontSize: 30.0,
+                                                            color: Colors.black,
+                                                          )
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    new Align(
+                                                        alignment: Alignment.bottomCenter,
+                                                        child: new Container(
+                                                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                          child:FlatButton(
+                                                            onPressed:(){
+                                                              Navigator.of(context, rootNavigator: true).pop();
+                                                            },
+                                                            child: new Text("CONTINUE",
+                                                              textAlign: TextAlign.center,
+                                                              style:new TextStyle(
+                                                                  fontFamily: "JumpingFrogDemo",
+                                                                  fontSize: 20.0,
+                                                                  color: Color.fromRGBO(245, 108, 87, 1.0),
+                                                                ),),
+                                                      ),),),
                                                   ],
                                                 ),
                                               ),
@@ -260,7 +308,7 @@ class GameGridState extends State<GameGrid> {
                                                       padding:EdgeInsets.symmetric(vertical: 10.0),
                                                       color: Color.fromRGBO(245, 108, 87, 1.0),
                                                       child: new Text(
-                                                          "Congratulations!",
+                                                          "OOPS!",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
                                                             fontFamily: "JumpingFrogDemo",
@@ -268,6 +316,37 @@ class GameGridState extends State<GameGrid> {
                                                             color: Colors.white,
                                                           )),
                                                     ),
+                                                    new Expanded(
+                                                      flex:3,
+                                                      child: new Center(
+                                                        child: new Text(
+                                                          "Are you sure you scanned the right item?",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontFamily: "LettersforLearners",
+                                                            fontSize: 30.0,
+                                                            color: Colors.black,
+                                                          )
+                                                        ),
+                                                      ),
+                                                    ),
+                                                     new Align(
+                                                        alignment: Alignment.bottomCenter,
+                                                        child: new Container(
+                                                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                          child:FlatButton(
+                                                            onPressed:(){
+                                                              Navigator.of(context, rootNavigator: true).pop();
+                                                            },
+                                                            child: new Text("CONTINUE",
+                                                              textAlign: TextAlign.center,
+                                                              style:new TextStyle(
+                                                                  fontFamily: "JumpingFrogDemo",
+                                                                  fontSize: 20.0,
+                                                                  color: Color.fromRGBO(245, 108, 87, 1.0),
+                                                                ),),
+                                                      ),),),
+                                                    
                                                   ],
                                                 ),
                                               ),

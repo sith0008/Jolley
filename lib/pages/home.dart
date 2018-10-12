@@ -117,32 +117,25 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     );
   }
 
-  getData() async {
-    return await Firestore.instance
-        .collection('Recipe')
-        .document('Curry Chicken')
-        .get()
-        .then((docSnap) {
-      var recipeName = docSnap.data['name'];
-      assert(recipeName is String);
-      return recipeName;
-    });
+Stream<QuerySnapshot> getNoteList({int offset, int limit}) {
+  Stream<QuerySnapshot> snapshots = Firestore.instance.collection('Recipe').snapshots();
+ 
+  if (offset != null) {
+    snapshots = snapshots.skip(offset);
   }
-
-    getData2() async {
-    return await Firestore.instance
-        .collection('Recipe')
-        .document('Curry Chicken')
-        .get()
-        .then((docSnap) {
-      var recipeItem = docSnap.data['items'];
-      assert(recipeItem is String);
-      return recipeItem;
-    });
+ 
+  if (limit != null) {
+    snapshots = snapshots.take(limit);
   }
+ 
+  return snapshots;
+}
 
   storeData() {
+    print('storing data');
+    print(getData());
     recipe_name = getData();
+    print(recipe_name);
     items = getData2();
     if (recipe_name == barcode) {
       DocumentReference documentReference = Firestore.instance
@@ -193,7 +186,6 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
               _showDialog();
             } else if (controller.index == 1) {
               scan();
-              storeData();
             }
           },
           backgroundColor: global.Global().primaryColor,
@@ -223,6 +215,8 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     try {
       String barcode = await BarcodeScanner.scan();
       setState(() => this.barcode = barcode);
+      print(barcode);
+      storeData();
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {

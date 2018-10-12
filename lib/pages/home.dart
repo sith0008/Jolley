@@ -24,11 +24,11 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
   ];
 
   String barcode = "";
-  // String get qr_barcode {
-  //   return barcode;
-  // }
+  String get qrBarcode {
+    return barcode;
+  }
 
-  String recipe_name;
+  String recipeName;
   String items;
 
   MyTabs handler;
@@ -40,16 +40,6 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     controller = new TabController(vsync: this, length: 2, initialIndex: 0);
     handler = _tabs[1];
     controller.addListener(handleSelected);
-    // getData().then((results) {
-    //   setState(() {
-    //     recipe_name = results;
-    //   });
-    // });
-    // getData2().then((results) {
-    //   setState(() {
-    //     items = results;
-    //   });
-    // });
   }
 
   @override
@@ -117,52 +107,51 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
     );
   }
 
-  getData() async {
-    return await Firestore.instance
-        .collection('Recipe')
-        .document('Curry Chicken')
-        .get()
-        .then((docSnap) {
-      var recipeName = docSnap.data['name'];
-      assert(recipeName is String);
-      return recipeName;
-    });
-  }
 
-    getData2() async {
-    return await Firestore.instance
-        .collection('Recipe')
-        .document('Curry Chicken')
-        .get()
-        .then((docSnap) {
-      var recipeItem = docSnap.data['items'];
-      assert(recipeItem is String);
-      return recipeItem;
-    });
-  }
+  // getData() {
+  //   return Firestore.instance
+  //       .collection('Recipe')
+  //       .document('Curry Chicken')
+  //       .get()
+  //       .then((docSnap) {
+  //     String recipeName = docSnap.data['name'];
+  //     return recipeName;
+  //   });
+  // }
+
+  // getData2() {
+  //   return Firestore.instance
+  //       .collection('Recipe')
+  //       .document('Curry Chicken')
+  //       .get()
+  //       .then((docSnap) {
+  //     String recipeItem = docSnap.data['items'];
+  //     return recipeItem;
+  //   });
+  // }
 
   storeData() {
     print('storing data');
-    print(getData().toString());
-    recipe_name = getData().toString();
-    print(recipe_name);
-    items = getData2().toString();
-    if (recipe_name == barcode) {
-      DocumentReference documentReference = Firestore.instance
-          .collection('Profiles')
-          .document('Jay Sean')
-          .collection('Recipe')
-          .document();
-      Map<String, String> recipeData = <String, String>{
-        "Name": recipe_name,
-        "Items": items,
-      };
-      documentReference.setData(recipeData, merge: true).whenComplete(() {
-        print("recipe created");
-        //print(count.toString());
-        //print(prevMessage);
-      }).catchError((e) => print(e));
-    }
+    // recipeName = getData().toString();
+    // print(recipeName);
+    // items = getData2().toString();
+    // print(items);
+    // if (recipeName == barcode) {
+    DocumentReference documentReference = Firestore.instance
+        .collection('Profiles')
+        .document('Jay Sean')
+        .collection('Recipe')
+        .document();
+    Map<String, String> recipeData = <String, String>{
+      "Name": barcode,
+      "Items": '3',
+    };
+    documentReference.setData(recipeData, merge: true).whenComplete(() {
+      print("recipe created");
+      //print(count.toString());
+      //print(prevMessage);
+    }).catchError((e) => print(e));
+    // }
   }
 
   @override

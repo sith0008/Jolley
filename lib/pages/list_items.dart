@@ -70,7 +70,7 @@ class ListItems extends StatelessWidget {
                   .collection('Profiles')
                   .document('Jay Sean')
                   .collection('Personal')
-                  .document('List1')
+                  .document('Groceries List 1')
                   .collection('items')
                   .snapshots(),
               builder: (context, snapshot) {

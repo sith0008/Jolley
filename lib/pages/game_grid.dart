@@ -20,6 +20,7 @@ class GameGridState extends State<GameGrid> {
     });
     return new Scaffold(
       body: new Container(
+<<<<<<< HEAD
         decoration: new BoxDecoration(
           gradient: new LinearGradient(
             begin: Alignment.topLeft,
@@ -32,6 +33,13 @@ class GameGridState extends State<GameGrid> {
           crossAxisAlignment:CrossAxisAlignment.stretch,
           children: <Widget>[
             new Container( 
+=======
+        color: Colors.red,
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            new Container(
+>>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
               padding: EdgeInsets.only(top: 30.0),
               child: new Text(
                 "Your Shopping List",
@@ -144,7 +152,11 @@ class GameGridState extends State<GameGrid> {
                                         child: new Column(
                                           children: <Widget>[
                                             new Expanded(
+<<<<<<< HEAD
                                               flex:3,
+=======
+                                              flex: 3,
+>>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                               child: new Image.network(snapshot
                                                   .data
                                                   .documents[index]['image']),
@@ -152,7 +164,10 @@ class GameGridState extends State<GameGrid> {
                                             new Expanded(
                                               flex: 1,
                                               child: new Container(
+<<<<<<< HEAD
                                                 color: Colors.blue,
+=======
+>>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                                 child: new Text(snapshot.data
                                                     .documents[index]['name']),
                                               ),
@@ -234,6 +249,7 @@ class GameGridState extends State<GameGrid> {
                                   child: new Card(
                                     elevation: 5.0,
                                     color: Colors.white,
+<<<<<<< HEAD
                                     child: new Container(
                                       decoration: new BoxDecoration(
                                         border: new Border.all(color:Colors.white,width:2.0),
@@ -243,12 +259,19 @@ class GameGridState extends State<GameGrid> {
                                       children: <Widget>[
                                         new Expanded(
                                           flex: 3, 
+=======
+                                    child: new Column(
+                                      children: <Widget>[
+                                        new Expanded(
+                                          flex: 3,
+>>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                           child: new Image.network(snapshot
                                               .data.documents[index]['image']),
                                         ),
                                         new Expanded(
                                           flex: 1,
                                           child: new Container(
+<<<<<<< HEAD
                                             color: Colors.teal,
                                             child: new Text(snapshot
                                                 .data.documents[index]['name'],style:TextStyle(color: Colors.white),
@@ -256,6 +279,14 @@ class GameGridState extends State<GameGrid> {
                                         ),
                                       ],
                                     ),),
+=======
+                                            child: new Text(snapshot
+                                                .data.documents[index]['name']),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+>>>>>>> ee02c45ac0a21060cbb20023e21669773e10f801
                                   ),
 
                                   // _buildGridTiles(

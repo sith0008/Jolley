@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/services.dart';
 import '../global.dart' as global;
+import './home.dart';
+
 
 class GameGrid extends StatefulWidget {
   State createState() => new GameGridState();
@@ -38,7 +40,7 @@ class GameGridState extends State<GameGrid> {
               child: new Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Text(
-                  "Your Shopping List",
+                  "My Shopping List",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: "HomeSchool",
@@ -408,22 +410,87 @@ class GameGridState extends State<GameGrid> {
                     })),
             new Expanded(
               flex: 1,
-              child: new Container(
-                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                decoration: new BoxDecoration(
-                  color: Colors.amber,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(10.0),
-                  border: Border.all(color: Colors.white, width: 1.0),
-                ),
-                child: Center(
-                    child: Text(points.toString() + " POINTS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30.0,
-                            fontFamily: "AldotheApache"))),
+              child: new Row(
+                children: <Widget>[
+                  new Expanded(
+                    flex:3,
+                    child: new GestureDetector(
+                      onTap:(){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Home()));
+                          },
+                      child: new Container(
+                        margin: EdgeInsets.fromLTRB(3.0, 10.0, 3.0, 10.0),
+                        padding: EdgeInsets.symmetric(horizontal:10.0),
+                        decoration: new BoxDecoration(
+                          color: Colors.amber,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(color: Colors.white, width: 1.0),
+                          ),
+                      child: Center(
+                        child: Text("EXIT",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontFamily: "AldotheApache"),),),
+                    ),
+                  ),
+                  ),
+
+                  new Expanded(
+                    flex:5,
+                    child: new Container(
+                    margin: EdgeInsets.fromLTRB(3.0, 10.0, 3.0, 10.0),
+                    decoration: new BoxDecoration(
+                      color: Colors.amber,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Colors.white, width: 1.0),
+                    ),
+                      child: Center(
+                        child: Text(points.toString() + " POINTS",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontFamily: "AldotheApache"),),),
+                  ),),
+                  new Expanded(
+                    flex: 3,
+                    child: new GestureDetector(
+                      onTap:(){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Home()));
+                          },
+                      child: new Container(
+                    margin: EdgeInsets.fromLTRB(3.0, 10.0, 3.0, 10.0),
+                    padding: EdgeInsets.symmetric(horizontal:10.0),
+                    decoration: new BoxDecoration(
+                      color: Colors.amber,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Colors.white, width: 1.0),
+                      ),
+                      child: Center(
+                        child: Text("SUBMIT",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontFamily: "AldotheApache"),),),
+                    ),
+                  ),),
+                ],
               ),
+
+
+              
             ),
           ],
         ),

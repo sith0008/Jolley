@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global.dart' as global;
 
-class AddFood extends StatelessWidget {
-  final String foodType;
-  AddFood(this.foodType);
+class AddRecipe extends StatelessWidget {
+  final String recipeType;
+  AddRecipe(this.recipeType);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text(foodType),
+          title: new Text(recipeType),
           backgroundColor: global.Global().primaryColor,
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: global.Global().textColor,
@@ -51,9 +51,11 @@ class AddFood extends StatelessWidget {
                   new Expanded(
                       child: new StreamBuilder(
                           stream: Firestore.instance
-                              .collection("Items")
-                              .document(foodType)
-                              .collection(foodType)
+                              .collection('Profiles')
+                              .document('Jay Sean')
+                              .collection('Recipe')
+                              .document('Curry Chicken')
+                              .collection('items')
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData)

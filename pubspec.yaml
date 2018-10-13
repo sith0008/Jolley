@@ -56,6 +56,8 @@ flutter:
     - assets/tap.png
     - assets/barcode.png
     - assets/trophy.png
+    - assets/list.png
+    - assets/recipe.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './add_food.dart' as add_food;
 import '../global.dart' as global;
 
-class AddList extends StatelessWidget {
+class SaveRecipe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text('Shop Catalogue'),
+          title: new Text('Saved Recipes'),
           backgroundColor: global.Global().primaryColor,
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: global.Global().textColor,
@@ -19,10 +19,14 @@ class AddList extends StatelessWidget {
         body: new Container(
           color: Colors.grey[200],
           child: new StreamBuilder(
-              stream: Firestore.instance.collection("Items").snapshots(),
+              stream: Firestore.instance
+                  .collection("Profiles")
+                  .document('Jay Sean')
+                  .collection('Recipe')
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData)
-                  return Text("loading");
+                  return CircularProgressIndicator();
                 else
                   return new GridView.builder(
                       itemCount: snapshot.data.documents.length,
@@ -34,7 +38,7 @@ class AddList extends StatelessWidget {
                               crossAxisCount: 2),
                       itemBuilder: (context, index) {
                         String foodType =
-                            snapshot.data.documents[index]['name'];
+                            snapshot.data.documents[index]['Name'];
                         return new Card(
                             child: new GestureDetector(
                                 onTap: () {
@@ -47,13 +51,16 @@ class AddList extends StatelessWidget {
                                 child: GridTile(
                                     footer: new Padding(
                                         padding: EdgeInsets.all(10.0),
-                                        child: Text(foodType,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13.0))),
+                                        child: Text(
+                                          foodType,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 13.0)
+                                        )),
                                     child: new Container(
-                                      margin: const EdgeInsets.all(40.0),
+                                      margin: const EdgeInsets.all(15.0),
                                       child: new Image.network(snapshot
                                           .data.documents[index]['image']),
                                     ))));

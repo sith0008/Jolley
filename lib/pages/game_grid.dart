@@ -131,7 +131,7 @@ class GameGridState extends State<GameGrid> {
                         .collection("Profiles")
                         .document("Jay Sean")
                         .collection("Personal")
-                        .document("List1")
+                        .document("Family Party")
                         .collection("items")
                         .snapshots(),
                     builder: (context, snapshot) {
@@ -228,7 +228,7 @@ class GameGridState extends State<GameGrid> {
                                               (index + 1).toString();
                                           DocumentReference itemRef =
                                               Firestore.instance.document(
-                                                  "Profiles/Jay Sean/Personal/List1/items/item" +
+                                                  "Profiles/Jay Sean/Personal/Family Party/items/item" +
                                                       number);
                                           Map<String, bool> data =
                                               <String, bool>{

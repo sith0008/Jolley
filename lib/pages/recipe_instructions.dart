@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global.dart' as global;
 // import './home.dart' as home;
 
 class RecipeInstructions extends StatelessWidget {
+    final String recipeName;
+  RecipeInstructions(this.recipeName);
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return new Container(
         child: new Container(
@@ -16,18 +20,44 @@ class RecipeInstructions extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: Colors.white,
               backgroundImage: new NetworkImage(document['number']),
-              radius: 24.0,
+              radius: 20.0,
             ),
-            title: new Text(document['instruction'])),
+            title: new Text(document['instruction']),
+            trailing: CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage: new NetworkImage(document['image']),
+              radius: 20.0,
+            ),),
       ),
     ));
+  }
+
+    Future<bool> infoDialog(BuildContext context) {
+    return showDialog<bool>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: new Text("Recipe Instructions"),
+            content: new Text(
+                "Follow the steps below with your family for some family fun cooking!"),
+            actions: <Widget>[
+              new FlatButton(
+                child: const Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              )
+            ],
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Curry Chicken'),
+          title: new Text(recipeName),
           backgroundColor: global.Global().primaryColor,
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: global.Global().textColor,
@@ -49,16 +79,21 @@ class RecipeInstructions extends StatelessWidget {
                               new Expanded(
                                   child: new Padding(
                                       padding: new EdgeInsets.all(8.0),
-                                      child: new Text('Instructions',
-                                          style: new TextStyle(
-                                              fontFamily: 'Raleway',
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.bold))),
+                                      child: new Padding(
+                                          padding: EdgeInsets.all(5.0),
+                                          child: new Text('Instructions',
+                                              style: new TextStyle(
+                                                  fontFamily: 'Raleway',
+                                                  fontSize: 20.0,
+                                                  fontWeight:
+                                                      FontWeight.bold)))),
                                   flex: 4),
                               new Expanded(
                                   child: new IconButton(
-                                      icon: new Icon(Icons.list),
-                                      onPressed: () {}),
+                                      icon: new Icon(Icons.info),
+                                      onPressed: () {
+                                        infoDialog(context);
+                                      }),
                                   flex: 1)
                             ],
                           ))),

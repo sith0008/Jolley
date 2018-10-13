@@ -43,7 +43,9 @@ class AddRecipe extends StatelessWidget {
                               new Expanded(
                                   child: new IconButton(
                                       icon: new Icon(Icons.add_shopping_cart),
-                                      onPressed: () {}),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      }),
                                   flex: 1)
                             ],
                           ))),

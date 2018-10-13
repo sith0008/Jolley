@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global.dart' as global;
 import './list.dart' as list;
 import './recipe.dart' as recipe;
-import './profiles.dart' as profiles;
+import './profile.dart' as profile;
 // import './qr_scanner.dart' as qr_scanner;
 
 class Home extends StatefulWidget {
@@ -174,7 +174,7 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => profiles.Profiles()));
+                          builder: (context) => profile.Profile()));
                 },
               ),
             ]),

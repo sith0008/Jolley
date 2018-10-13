@@ -124,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(labelText: 'Password'),
         validator: PasswordFieldValidator.validate,
         onSaved: (value) => _password = value,
+        obscureText: true
       ),
     ];
   }

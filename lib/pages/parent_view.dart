@@ -17,8 +17,7 @@ class ParentView extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        list.List()));
+                                    builder: (context) => list.List()));
                           },
                           child: Card(
                               color: Colors.white,
@@ -30,8 +29,8 @@ class ParentView extends StatelessWidget {
                                   padding:
                                       EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 10.0),
                                   child: new Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         new Center(
                                           child: CircleAvatar(
@@ -73,8 +72,8 @@ class ParentView extends StatelessWidget {
                                   padding:
                                       EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 10.0),
                                   child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         new Center(
                                           child: CircleAvatar(

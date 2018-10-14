@@ -268,7 +268,7 @@ class AddFoodState extends State<AddFood> {
                                             ])));
                                   });
                           }),
-                      flex: 5)
+                      flex: 6)
                 ])));
   }
 }

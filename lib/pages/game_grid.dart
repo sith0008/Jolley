@@ -219,8 +219,7 @@ class GameGridState extends State<GameGrid> {
                             } else {
                               return new GestureDetector(
                                 onTap: () {
-                                  scan();
-                                  showDialog(
+                                  scan().whenComplete(() {showDialog(
                                       context: context,
                                       builder: (context) {
                                         //print(barcode);
@@ -500,7 +499,8 @@ class GameGridState extends State<GameGrid> {
                                             ),
                                           );
                                         }
-                                      });
+                                      });});
+                                  
                                 },
                                 child: new Container(
                                   padding: EdgeInsets.all(7.0),
@@ -646,7 +646,7 @@ class GameGridState extends State<GameGrid> {
     );
   }
 
-  Future scan() async {
+  scan() async {
     try {
       String barcode = await BarcodeScanner.scan();
       setState(() => this.barcode = barcode);
@@ -654,7 +654,7 @@ class GameGridState extends State<GameGrid> {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {
           this.barcode = 'The user did not grant the camera permission!';
-        });
+        }); 
       } else {
         setState(() => this.barcode = 'Unknown error: $e');
       }

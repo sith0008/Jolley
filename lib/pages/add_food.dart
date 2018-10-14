@@ -1,11 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global.dart' as global;
+import 'dart:async';
 
-class AddFood extends StatelessWidget {
+class AddFood extends StatefulWidget {
   final String foodType;
   AddFood(this.foodType);
+  State createState() => new AddFoodState(foodType);
+}
+
+class AddFoodState extends State<AddFood> {
+  final String foodType;
+  AddFoodState(this.foodType);
   @override
+  var count;
+  var listCount;
+  addItem(DocumentReference docRef) {
+    
+    docRef.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        setState(() {
+          count = int.parse(datasnapshot.data['quantity']) + 1;
+          print (count);
+        });
+      }
+    });
+    return count;
+  }
+  countItems(DocumentReference docRef) {
+    
+    docRef.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        setState(() {
+          listCount = int.parse(datasnapshot.data['Items']);
+          
+        });
+      }
+    });
+    return listCount;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
@@ -88,6 +122,8 @@ class AddFood extends StatelessWidget {
                                                         tooltip:
                                                             'Decrease quantity by 1',
                                                         onPressed: () {
+                                                          
+
                                                           Firestore.instance
                                                               .runTransaction(
                                                                   (Transaction
@@ -123,6 +159,63 @@ class AddFood extends StatelessWidget {
                                                         tooltip:
                                                             'Increase quantity by 1',
                                                         onPressed: () {
+                                                          //var countItems;
+                                                          DocumentReference docRef = Firestore
+                                                              .instance
+                                                              .collection(
+                                                                  "Profiles")
+                                                              .document(
+                                                                  "Jay Sean")
+                                                              .collection(
+                                                                  "Personal")
+                                                              .document(
+                                                                  "Groceries List 1");
+                                                              
+                                                          countItems(docRef);
+
+                                                          DocumentReference docRef2 = Firestore
+                                                            .instance
+                                                              .collection(
+                                                                  "Profiles")
+                                                              .document(
+                                                                  "Jay Sean")
+                                                              .collection(
+                                                                  "Personal")
+                                                              .document(
+                                                                  "Groceries List 1")
+                                                              .collection(
+                                                                  "items")
+                                                              .document("item"+(listCount+1).toString());
+                                                              
+                                                          //addItem(docRef2);
+                                                          
+                                                             
+                                                            
+                                                          docRef.setData({"Items":(listCount+1).toString()},merge:true);
+                                                          docRef2.setData({
+                                                            "checked": false,
+                                                            "name": snapshot
+                                                                    .data
+                                                                    .documents[
+                                                                index]['name'],
+                                                            "barcode": snapshot
+                                                                    .data
+                                                                    .documents[
+                                                                index]['Barcode'],
+                                                            "image": snapshot
+                                                                    .data
+                                                                    .documents[
+                                                                index]['image'],
+                                                            "quantity": (quantity+1).toString()
+                                                          },
+                                                              merge: true)
+                                                            .whenComplete(() {
+                                                              print(
+                                                                  "list created");
+                                                              //print(count.toString());
+                                                              //print(prevMessage);
+                                                            }).catchError((e) =>
+                                                                print(e));
                                                           Firestore.instance
                                                               .runTransaction(
                                                                   (Transaction
@@ -162,7 +255,7 @@ class AddFood extends StatelessWidget {
                                               ),
                                               new Padding(
                                                   padding: EdgeInsets.all(5.0),
-                                                  child: new Text(
+                                                  child:  new Text(
                                                       snapshot.data
                                                               .documents[index]
                                                           ['name'],

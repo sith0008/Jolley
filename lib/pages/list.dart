@@ -49,22 +49,40 @@ class _ListState extends State<List> {
     await showDialog<String>(
       context: context,
       builder: (BuildContext context) => new AlertDialog(
-            contentPadding: const EdgeInsets.all(16.0),
-            content: new Row(
-              children: <Widget>[
-                new Expanded(
-                  child: new TextField(
-                    autofocus: true,
-                    onChanged: (String name) {
-                      listName = name;
-                    },
-                    decoration: new InputDecoration(
-                        labelText: 'List Name',
-                        hintText: 'eg. Groceries List 1'),
+            contentPadding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+            content: new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                new Container(
+                  padding: EdgeInsets.symmetric(vertical:10.0),
+                  color: global.Global().primaryColor1,
+                  child: new Text(
+                    "Create a new list",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+
+                    ),
                   ),
-                )
+                ),
+
+                new Container(
+                  padding: EdgeInsets.all(16.0),
+                  child:new Row(
+                  children: <Widget>[
+                    new Expanded(
+                      child: new TextField(
+                        autofocus: true,
+                        onChanged: (String name) {
+                          listName = name;
+                        },
+                        decoration: new InputDecoration(
+                            labelText: 'List Name',
+                            hintText: 'eg. Groceries List 1'),
+                      ),
+                  )
               ],
-            ),
+            ),),]),
             actions: <Widget>[
               new FlatButton(
                   child: const Text('CANCEL'),

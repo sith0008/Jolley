@@ -97,7 +97,7 @@ class _ListItemsState extends State<ListItems> {
                                       String number = (index + 1).toString();
                                       DocumentReference itemRef =
                                           Firestore.instance.document(
-                                              "Profiles/Jay Sean/Personal/Family Party/items/item" +
+                                              "Profiles/Jay Sean/Personal/" + lists1 + "/items/item" +
                                                   number);
                                       Map<String, bool> data = <String, bool>{
                                         "checked": value,

@@ -1,8 +1,8 @@
-# toshibaretailchallenge
+# Toshiba Retail Challenge 2018
+An application to bring back the fun in shopping at retail grocery outlets through a family centric game.
 
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+## How to use
+Download the apk in the repository. 
+Login with the following ID:
+Username: jaysean@toshiba.com
+Password: 1234567890

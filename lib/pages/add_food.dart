@@ -175,7 +175,7 @@ class AddFood extends StatelessWidget {
                                             ])));
                                   });
                           }),
-                      flex: 5)
+                      flex: 6)
                 ])));
   }
 }

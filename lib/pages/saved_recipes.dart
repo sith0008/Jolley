@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import './add_food.dart' as add_food;
+import './add_recipe.dart' as add_recipe;
 import '../global.dart' as global;
 
 class SaveRecipe extends StatelessWidget {
@@ -46,7 +46,7 @@ class SaveRecipe extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              add_food.AddFood(foodType)));
+                                              add_recipe.AddRecipe(foodType)));
                                 },
                                 child: GridTile(
                                     footer: new Padding(

@@ -56,12 +56,15 @@ class AddRecipe extends StatelessWidget {
                               .collection('Profiles')
                               .document('Jay Sean')
                               .collection('Recipe')
-                              .document('Curry Chicken')
+                              .document(recipeType)
                               .collection('items')
                               .snapshots(),
                           builder: (context, snapshot) {
-                            if (!snapshot.hasData)
+                            if (!snapshot.hasData) {
+                              print(snapshot.data.documents.length);
+
                               return CircularProgressIndicator();
+                            }
                             else
                               return new GridView.builder(
                                   itemCount: snapshot.data.documents.length,
@@ -75,6 +78,7 @@ class AddRecipe extends StatelessWidget {
                                     int quantity = snapshot
                                         .data.documents[index]['quantity'];
                                     String strQuantity = quantity.toString();
+                                    print('test');
                                     return new Card(
                                         child: new GridTile(
                                             footer: new Padding(

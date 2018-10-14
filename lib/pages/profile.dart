@@ -7,7 +7,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text('Recipes'),
+          title: new Text('Profiles'),
           backgroundColor: global.Global().primaryColor,
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: global.Global().textColor,

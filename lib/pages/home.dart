@@ -53,7 +53,7 @@ class MyTabsState extends State<Home> with SingleTickerProviderStateMixin {
               indicatorColor: global.Global().textColor,
               labelColor: global.Global().textColor,
               unselectedLabelColor: Colors.grey),
-            title: new Text("Toshiba"),
+            title: new Text("Jolley"),
             backgroundColor: global.Global().primaryColor,
             textTheme: Theme.of(context).textTheme.apply(
                   bodyColor: global.Global().textColor,

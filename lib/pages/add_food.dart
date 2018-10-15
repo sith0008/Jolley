@@ -201,7 +201,7 @@ class AddFoodState extends State<AddFood> {
                                                             "barcode": snapshot
                                                                     .data
                                                                     .documents[
-                                                                index]['Barcode'],
+                                                                 index]['Barcode'],
                                                             "image": snapshot
                                                                     .data
                                                                     .documents[
